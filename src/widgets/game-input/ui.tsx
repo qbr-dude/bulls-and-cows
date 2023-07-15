@@ -1,30 +1,28 @@
 import React, { useEffect, useRef } from 'react'
-import { DigitInput } from '../../../shared/uikit/input';
-import { createEvent, createStore } from 'effector';
+import { DigitInput } from '../../shared/uikit/input';
 import { useStore } from 'effector-react';
 
-type UpdateProps = {
-    id: number,
-    value: number | '',
-};
-
-const update = createEvent<UpdateProps>();
-
-const $values = createStore<(number | '')[]>(['', '', '', ''])
-    .on(update, (state, { id, value }) =>
-        state.map((val, index) => index === id ? value : val));
-
-const $focusedCell = createStore<number>(0)
-    .on(update, (state, { id }) => id + 1);
+import { $focusedCell, $unsetted, $values, handleKeyPress, update } from './model'
 
 const GameInputModel = () => {
     const values = useStore($values);
     const focusedCell = useStore($focusedCell);
+    const unsetted = useStore($unsetted);
     const refs = useRef<(HTMLInputElement | null)[]>([]);
 
     useEffect(() => {
         refs.current[focusedCell]?.focus();
-    }, [focusedCell, values])
+    }, [focusedCell, values]);
+
+    useEffect(() => {
+        if (!unsetted)
+            return;
+        // TODO find better option
+        refs.current.forEach(ref => ref?.classList.remove('bg-clip-content', 'border-red-400', 'border-4'));
+        unsetted.forEach(id => {
+            refs.current[id]?.classList.add('bg-clip-content', 'border-red-400', 'border-4');
+        });
+    }, [unsetted])
 
     return (
         <div className='my-5 flex'>
@@ -32,8 +30,9 @@ const GameInputModel = () => {
                 <div className='mx-2' key={id}>
                     <DigitInput
                         value={values[id]}
-                        onChange={(value) => update({ id, value })}
                         ref={el => refs.current[id] = el}
+                        onChange={(value) => update({ id, value })}
+                        onKeyPress={(e) => handleKeyPress(e, id)}
                     />
                 </div>
             ))}

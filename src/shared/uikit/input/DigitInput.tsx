@@ -3,9 +3,10 @@ import React, { forwardRef } from 'react'
 type Props = {
     value: number | '',
     onChange: (val: number | '') => void,
+    onKeyPress: (e: React.KeyboardEvent<HTMLInputElement>) => void,
 }
 
-const DigitInput = forwardRef(({ value, onChange }: Props, ref: React.Ref<HTMLInputElement>) => {
+const DigitInput = forwardRef(({ value, onChange, onKeyPress }: Props, ref: React.Ref<HTMLInputElement>) => {
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (!e.currentTarget.value.match(/^\d+$/))
             return;
@@ -25,6 +26,7 @@ const DigitInput = forwardRef(({ value, onChange }: Props, ref: React.Ref<HTMLIn
             type="text"
             onChange={handleChange}
             onClick={handleClick}
+            onKeyUp={onKeyPress}
             className='text-5xl font-medium rounded w-10 h-14 text-center caret-transparent select-none'
             maxLength={2}
             size={1}

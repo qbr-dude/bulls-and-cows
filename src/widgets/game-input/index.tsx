@@ -1,1 +1,2 @@
-export { default } from './model'
+export { default } from './ui'
+export { $values } from './model'
