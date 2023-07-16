@@ -2,8 +2,8 @@ import React from 'react'
 import { useStore, createGate } from 'effector-react';
 import { $bulls, $cows } from '../../shared/game';
 
-import { ReactComponent as Bull } from './bull.svg';
-import { ReactComponent as Cow } from './cow.svg';
+import { ReactComponent as Bull } from './../../shared/svg/bull.svg';
+import { ReactComponent as Cow } from './../../shared/svg/cow.svg';
 import classNames from 'classnames';
 import { $hasBullsChanges, $hasCowsChanges } from './model';
 

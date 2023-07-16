@@ -59,7 +59,7 @@ export const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>, id: num
             return;
         case 'Backspace':
             update({ id, value: '' });
-            moveFocus(id - 1);
+            moveFocus(id);
             return;
 
         default:

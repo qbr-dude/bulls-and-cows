@@ -22,7 +22,7 @@ export const validateAnswerFx = createEffect<number[], boolean, void>((ans) => {
             updateBulls(bulls);
         if (cows !== $cows.getState())
             updateCows(cows);
-        addToPrevious(ans);
+        addToPrevious({ values: ans, bulls, cows });
         return Promise.reject();
     }
 });

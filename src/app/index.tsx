@@ -15,16 +15,16 @@ function App() {
 	useEffect(() => newGame(), []);
 
 	return (
-		<div className='h-screen w-screen bg-main'>
-			<div className='flex h-full w-full justify-center items-center'>
-				<div className='flex flex-col'>
+		<div className='h-screen w-screen bg-main flex justify-center'>
+			<div className='flex'>
+				<div className='flex flex-col flex-1 pt-20'>
 					<BullsAndCows />
 					<GameInput />
 					<PreviousAttempts />
 				</div>
-				{/* <div>
+				<div className='flex-0'>
 					STATE
-				</div> */}
+				</div>
 			</div>
 		</div>
 	);
