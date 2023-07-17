@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/bulls-and-cows/static/css/main.d363fbae.css",
-    "main.js": "/bulls-and-cows/static/js/main.4c9f806b.js",
+    "main.js": "/bulls-and-cows/static/js/main.fc090797.js",
     "static/media/cow.svg": "/bulls-and-cows/static/media/cow.a09b872f0c746c5f6ee76ca668b0a0f1.svg",
     "static/media/bull.svg": "/bulls-and-cows/static/media/bull.dcf5a22564f88877932a1d9641bf341e.svg",
     "static/media/angle.svg": "/bulls-and-cows/static/media/angle.c4607127a59ae9e2f690267c195b6662.svg",
     "index.html": "/bulls-and-cows/index.html",
     "main.d363fbae.css.map": "/bulls-and-cows/static/css/main.d363fbae.css.map",
-    "main.4c9f806b.js.map": "/bulls-and-cows/static/js/main.4c9f806b.js.map"
+    "main.fc090797.js.map": "/bulls-and-cows/static/js/main.fc090797.js.map"
   },
   "entrypoints": [
     "static/css/main.d363fbae.css",
-    "static/js/main.4c9f806b.js"
+    "static/js/main.fc090797.js"
   ]
 }
