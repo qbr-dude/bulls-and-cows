@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/bulls-and-cows/static/css/main.a1b56e1b.css",
+    "main.js": "/bulls-and-cows/static/js/main.53ffb30b.js",
+    "static/media/cow.svg": "/bulls-and-cows/static/media/cow.a09b872f0c746c5f6ee76ca668b0a0f1.svg",
+    "static/media/bull.svg": "/bulls-and-cows/static/media/bull.dcf5a22564f88877932a1d9641bf341e.svg",
+    "static/media/angle.svg": "/bulls-and-cows/static/media/angle.c4607127a59ae9e2f690267c195b6662.svg",
+    "index.html": "/bulls-and-cows/index.html",
+    "main.a1b56e1b.css.map": "/bulls-and-cows/static/css/main.a1b56e1b.css.map",
+    "main.53ffb30b.js.map": "/bulls-and-cows/static/js/main.53ffb30b.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a1b56e1b.css",
+    "static/js/main.53ffb30b.js"
+  ]
+}
