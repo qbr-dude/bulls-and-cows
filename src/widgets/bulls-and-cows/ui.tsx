@@ -1,5 +1,5 @@
 import React from 'react'
-import { useStore, createGate } from 'effector-react';
+import { useStore } from 'effector-react';
 import { $bulls, $cows } from '../../shared/game';
 
 import { ReactComponent as Bull } from './../../shared/svg/bull.svg';

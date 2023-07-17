@@ -1,5 +1,5 @@
 import React from 'react'
-import { PreviousAttemptType } from '../../shared/game/state';
+import { type PreviousAttemptType } from '../../shared/game';
 import classNames from 'classnames';
 
 import { ReactComponent as Bull } from './../../shared/svg/bull.svg';

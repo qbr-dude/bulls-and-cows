@@ -1,32 +1,49 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import './index.css';
 import GameInput from './../widgets/game-input'
 import { useStore } from 'effector-react';
-import { $gameOver } from '../shared/game';
-import { $result } from '../shared/game/init';
-import { newGame } from './../shared/game/init';
+import { $gameResult, newGame } from '../shared/game';
 import PreviousAttempts from './../widgets/previous-attemps';
 import BullsAndCows from '../widgets/bulls-and-cows';
+import Modal from '../shared/uikit/modal';
+import { closeModal, openModal } from '../shared/uikit/modal/ui';
+import { formatTime } from './../shared/utils/index';
 
 function App() {
-	const gameOver = useStore($gameOver);
-	const result = useStore($result);
+	const gameOver = useStore($gameResult);
+	const winModal = useRef(null);
 
-	useEffect(() => newGame(), []);
+	const startNewGame = () => {
+		newGame();
+		closeModal(winModal);
+	}
+
+	useEffect(() => startNewGame, []);
+	useEffect(() => { if (gameOver) openModal(winModal) }, [gameOver])
 
 	return (
-		<div className='h-screen w-screen bg-main flex justify-center'>
-			<div className='flex'>
-				<div className='flex flex-col flex-1 pt-20'>
-					<BullsAndCows />
-					<GameInput />
-					<PreviousAttempts />
-				</div>
-				<div className='flex-0'>
-					STATE
+		<>
+			<div className='h-screen w-screen bg-main flex justify-center'>
+				<div className='flex'>
+					<div className='flex flex-col flex-1 pt-20'>
+						<BullsAndCows />
+						<GameInput />
+						<PreviousAttempts />
+					</div>
+					<div className='flex-0'>
+						STATE
+					</div>
 				</div>
 			</div>
-		</div>
+			<Modal ref={winModal}>
+				{gameOver && <div className='flex flex-col bg-dark-main p-10 text-second'>
+					<span className='text-5xl font-medium '>You won!</span>
+					<span>In {gameOver?.turns} turns</span>
+					<span>With time: {formatTime(gameOver?.time!)} (NEW RECORD)</span>
+					<button onClick={startNewGame}>Start new game</button>
+				</div>}
+			</Modal>
+		</>
 	);
 }
 

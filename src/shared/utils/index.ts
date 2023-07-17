@@ -1,0 +1,1 @@
+export const formatTime = (time: Date): string => `${time.getMinutes()}:${time.getSeconds()}`

@@ -1,7 +1,6 @@
 import { createEvent, createEffect, createStore } from 'effector';
-import { validateAnswerFx } from './../../shared/game/index';
+import { validateAnswerFx } from './../../shared/game';
 import { sample } from 'effector';
-
 
 type UpdateProps = {
     id: number,

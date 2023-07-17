@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useStore } from 'effector-react';
-import { $previous, PreviousAttemptType } from '../../shared/game/state';
+import { $previousList, type PreviousAttemptType } from '../../shared/game';
 
 import AttemptHint from './hint';
 
@@ -26,7 +26,7 @@ const Attempt = ({ values, ...rest }: PreviousAttemptType) => {
 }
 
 const PreviousAttempts = () => {
-    const previous = useStore($previous);
+    const previous = useStore($previousList).slice(0, 9);
     return (
         <div className=''>
             {previous.map((attempt, index) => (
