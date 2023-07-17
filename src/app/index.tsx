@@ -19,7 +19,7 @@ function App() {
 		closeModal(winModal);
 	}
 
-	useEffect(() => startNewGame, []);
+	useEffect(() => startNewGame(), []);
 	useEffect(() => { if (gameOver) openModal(winModal) }, [gameOver])
 
 	return (
