@@ -8,6 +8,7 @@ import BullsAndCows from '../widgets/bulls-and-cows';
 import Modal from '../shared/uikit/modal';
 import { closeModal, openModal } from '../shared/uikit/modal/ui';
 import { formatTime } from './../shared/utils/index';
+import GameState from '../widgets/game-state';
 
 function App() {
 	const gameOver = useStore($gameResult);
@@ -30,8 +31,8 @@ function App() {
 						<GameInput />
 						<PreviousAttempts />
 					</div>
-					<div className='flex-0'>
-						STATE
+					<div className='flex-0 ml-32 pt-24'>
+						<GameState />
 					</div>
 				</div>
 			</div>

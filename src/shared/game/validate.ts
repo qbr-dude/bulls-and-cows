@@ -1,6 +1,6 @@
-import { restore, createEffect, createStore } from 'effector';
-import { $result, newGame } from './init';
-import { $bulls, $cows, $previousList, $timer, addToPrevious, updateBulls, updateCows } from './state';
+import {  createEffect, createStore, forward } from 'effector';
+import { $result} from './init';
+import { $bulls, $cows, $previousList, $timer, addToPrevious, updateBulls, updateCows, stopTimer } from './state';
 import { sample } from 'effector';
 
 export const validateAnswerFx = createEffect<number[], boolean, void>((ans) => {
@@ -24,7 +24,7 @@ export const validateAnswerFx = createEffect<number[], boolean, void>((ans) => {
 
 type GameResultType = {
     turns: number,
-    time: Date,
+    time: number,
 }
 
 export const $gameResult = createStore<GameResultType | null>(null);
@@ -34,7 +34,12 @@ sample({
     clock: validateAnswerFx.doneData,
     fn: ({ previous, timer }) => ({
         turns: previous.length,
-        time: new Date(Date.now() - timer.getTime())
+        time: timer
     }),
     target: $gameResult
+})
+
+forward({
+    from: validateAnswerFx.done,
+    to: stopTimer
 })
